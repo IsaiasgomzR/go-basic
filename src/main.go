@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	mypackage "./mypackage/mypackage.go"
 )
 
 
@@ -23,7 +24,41 @@ func doubeReturnValue(a int)(c , d int){
 	return a , a * 2
 }
 
+func isPalindromo(text string){
+	var textReverse string
+	for i := len(text) -1; i>= 0; i--{
+		textReverse += string(text[i])
+	}
+	if textReverse == text{
+		fmt.Println("this is palindromo")
+	}else{
+		fmt.Println("this is not palindromo")
+	}
+}
+
+type car struct {
+	brand string
+	year int
+}
+
 func main() {
+	basic()
+
+	mycar := car{brand: "kia",year:202}
+	fmt.Println(mycar)
+
+
+	var otherCar car
+	otherCar.brand = "MG"
+
+	fmt.Println(otherCar)
+
+
+
+}
+
+func basic (){
+
 	fmt.Println("hello world")
 
 	const pi float64 = 3.14
@@ -167,5 +202,53 @@ func main() {
 		}
 	}
 
+	// array 
+	var array  [4]int
+	array[0] = 1
+	array[1] = 2
+	fmt.Println(array) 
+	fmt.Println(len(array), cap(array ))
+
+
+	//slices 
+
+	slice := []int{1,2,3,4,5,6}	
+	fmt.Println(slice, len(slice), cap(slice))
+
+	fmt.Println(slice[0])
+	fmt.Println(slice[:3])
+	fmt.Println(slice[2:4])
+	fmt.Println(slice[4:])
+
+	// append
+	slice = append(slice, 7)
+	fmt.Println(slice)
+
+	newSlice := []int{8,9}
+
+	slice = append(slice, newSlice...)
+	fmt.Println(slice)
+
+
+	sliceText:= []string {"hola", "que", "hace"}
+	for i:= range sliceText{
+		fmt.Println(sliceText[i])
+	}
+
+	isPalindromo("aman")
 	
+
+	m := make(map[string]int)
+
+	m["jose"] = 13
+	m["isaias"] = 20
+	fmt.Println(m)
+
+	for i, v := range m {
+		fmt.Println(i, v)
+	}
+
+	noTFount := m["josep"]
+	fmt.Println(noTFount)
 }
+
